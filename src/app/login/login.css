@@ -1,0 +1,14 @@
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-content h4 {
+  font-weight: 600;
+}
+
+.modal-content p {
+  margin: 0;
+  color: #444;
+}

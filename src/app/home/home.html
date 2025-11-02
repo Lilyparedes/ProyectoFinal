@@ -1,0 +1,75 @@
+<main class="hero">
+  <section class="intro d-flex align-items-center justify-content-center py-5 flex-column flex-lg-row text-center text-lg-start">
+  <div class="intro-text me-lg-5">
+    <h2>Reserva tu asiento fácilmente</h2>
+    <p>Selecciona tu tipo de asiento (Business o Económico), elige tu lugar y recibe la confirmación por correo electrónico.</p>
+    <a class="btn btn-primary mt-3" routerLink="/seats">Comenzar ahora</a>
+  </div>
+  <div class="intro-image mt-4 mt-lg-0">
+    <img src="assets/logo2.png" alt="Imagen de asientos de avión" class="img-fluid" />
+  </div>
+</section>
+<section class="stats-home my-5 text-center">
+  <div class="container">
+    <h3 class="mb-4">📊 Datos de nuestros servicios</h3>
+
+    <!--  Banner VIP destacado -->
+    <div *ngIf="isVIP" class="vip-banner mb-4">
+       <strong>¡Usuario VIP!</strong> Gracias por confiar en nosotros 
+      <br>
+      Tienes <strong>10% de descuento</strong> en todas tus futuras reservas 
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-3">
+        <div class="card shadow rounded-4 p-3">
+          <h4>👥 Usuarios registrados</h4>
+          <p class="display-6 text-primary fw-bold">{{ totalUsers }}</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="card shadow rounded-4 p-3">
+          <h4>🎟️ Asientos reservados</h4>
+          <p class="display-6 text-success fw-bold">{{ totalReservationsGlobal }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <section class="features row text-center my-5">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <i class="bi bi-airplane fs-1 text-primary mb-3"></i>
+          <h5>Asientos disponibles</h5>
+          <p>Consulta en tiempo real qué asientos están ocupados o libres.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <i class="bi bi-envelope-check fs-1 text-primary mb-3"></i>
+          <h5>Confirmación automática</h5>
+          <p>Recibe correos con tus reservas, modificaciones y cancelaciones.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <i class="bi bi-star-fill fs-1 text-primary mb-3"></i>
+          <h5>Descuento VIP</h5>
+          <p>Haz más de 5 reservas y obtén 10% de descuento permanente.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+ 

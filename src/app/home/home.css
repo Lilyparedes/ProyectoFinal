@@ -1,0 +1,299 @@
+/* ===================================
+   HOME.CSS - ESTILO PRINCIPAL
+=================================== */
+
+/* Reset general */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Contenido principal */
+main.hero {
+  flex: 1; /* ocupa todo el espacio disponible antes del footer */
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: white;
+  padding: 4rem 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero .intro {
+  max-width: 1140px; /* igual ancho que menú */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero .intro-text {
+  flex: 1;
+}
+
+.hero .intro h2 {
+  font-weight: 700;
+  color: #280071;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero .intro p {
+  font-weight: 400;
+  color: #555;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+.hero .intro a.btn-primary {
+  background-color: #6821ec;
+  border-color: #6821ec;
+  font-weight: 500;
+  padding: 0.85rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.hero .intro a.btn-primary:hover {
+  background-color: #4e17b3;
+  border-color: #4e17b3;
+  transform: translateY(-2px);
+}
+
+/* Imagen al lado del texto */
+.hero .intro-image {
+  flex: 1;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.hero .intro-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 4rem 1rem;
+  background: white;
+  width: 100%;
+}
+
+.features .card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+.features .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.features .card i {
+  font-size: 3rem;
+  color: #6821ec;
+  margin-bottom: 1rem;
+}
+
+.features .card h5 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.features .card p {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+  background-color: #280071;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+}
+
+.footer .container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Media Queries */
+@media (min-width: 992px) {
+  .hero .intro {
+    flex-direction: row; /* lado a lado */
+    text-align: left;
+    align-items: center;
+  }
+
+  .hero .intro-image {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .hero .intro-text {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero .intro h2 {
+    font-size: 2.3rem;
+  }
+
+  .hero .intro p {
+    font-size: 1.1rem;
+  }
+
+  .features {
+    padding: 3rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero .intro h2 {
+    font-size: 2rem;
+  }
+
+  .hero .intro p {
+    font-size: 1rem;
+  }
+
+  .hero .intro a.btn-primary {
+    width: 80%;
+    padding: 0.75rem 0;
+  }
+
+  .features .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero .intro-text {
+    margin-right: 0;
+  }
+
+  .hero .intro-image {
+    margin-top: 1.5rem;
+  }
+}
+
+.stats-home h4 {
+  font-weight: 600;
+  color: #1c2541;
+}
+
+.stats-home .card {
+  transition: transform 0.3s;
+}
+
+.stats-home .card:hover {
+  transform: translateY(-6px);
+}
+
+/* ============================== */
+/* 📊 Sección de estadísticas Home */
+/* ============================== */
+
+.stats-home {
+  background: #f8f9fa;
+  padding: 3rem 1rem;
+  width: 100%;
+}
+
+.stats-home h3 {
+  font-weight: 700;
+  color: #280071;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.stats-home .card {
+  border-radius: 1rem;
+  text-align: center;
+  padding: 1.5rem;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.08);
+}
+
+.stats-home .card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+.stats-home .display-6 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.vip-banner {
+  background: #ffd700;
+  color: #280071;
+  padding: 14px;
+  margin-top: 16px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  font-size: 1.1rem;
+  border: 2px solid #fff6b5;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 6px #e8cf00; }
+  to   { box-shadow: 0 0 14px #ffd700; }
+}
+
+
+@media (max-width: 768px) {
+  .stats-home .display-6 {
+    font-size: 2.2rem;
+  }
+}

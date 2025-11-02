@@ -1,0 +1,67 @@
+<div class="login-page d-flex justify-content-center align-items-center" style="min-height: 80vh; background: #f8f9fa;">
+  <div class="card p-4 shadow" style="max-width: 400px; width: 100%; border-radius: 1rem;">
+    
+    <!-- Logo y título -->
+    <div class="text-center mb-4">
+      <img src="assets/logo1.png" alt="Logo InfiniteFlights" style="height: 50px;" class="mb-2">
+      <h2 style="color: #280071; font-weight: 700;">Iniciar Sesión</h2>
+    </div>
+
+    <!-- Formulario -->
+ <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo electrónico</label>
+    <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+  </div>
+
+  <button class="btn btn-primary w-100" style="background-color: #6821ec; border-color: #6821ec;">
+    Iniciar Sesión
+  </button>
+
+</form>
+
+<!-- Modal de éxito -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h5 class="modal-title text-success">Inicio de sesión exitoso ✅</h5>
+      <div class="modal-body">
+        <p>¡Bienvenido de nuevo!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de error -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h5 class="modal-title text-danger">Error de inicio de sesión ❌</h5>
+      <div class="modal-body">
+        <p>Correo o contraseña incorrectos</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Registro -->
+    <p class="mt-3 text-center">
+      ¿No tienes cuenta? <a routerLink="/register" style="color: #6821ec; font-weight: 500;">Regístrate aquí</a>
+    </p>
+
+  </div>
+</div>

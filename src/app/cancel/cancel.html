@@ -1,0 +1,42 @@
+<section class="card">
+
+  <div class="top">
+    <h2>Cancelar Reserva ✈️</h2>
+  </div>
+
+  <form class="panel" #cancelForm="ngForm" (ngSubmit)="cancelReservation(cancelForm)">
+
+    <div class="field">
+      <label>CUI del pasajero</label>
+      <input type="text" name="cui" [(ngModel)]="cui"
+             maxlength="13" placeholder="1234567890101"
+             required>
+    </div>
+
+    <div class="field">
+      <label>Asiento a cancelar</label>
+      <input type="text" name="seatNumber" [(ngModel)]="seatNumber"
+             placeholder="Ej. A3" required>
+    </div>
+
+    <button class="btn danger" type="submit">
+      Cancelar Reserva
+    </button>
+  </form>
+</section>
+
+
+<!--  Modal de confirmación -->
+<div class="modal-overlay" *ngIf="showSuccessModal">
+  <div class="modal-content">
+      <h3>Reserva cancelada ✅</h3>
+      <p>El pasajero <strong>{{ passengerName }}</strong> ya no tiene asignado el asiento
+        <strong>{{ seatNumber }}</strong>.</p>
+
+      <p>📩 Se ha enviado un correo con los detalles.</p>
+
+      <button class="btn primary mt-2" (click)="closeSuccess()">
+        Aceptar
+      </button>
+  </div>
+</div>

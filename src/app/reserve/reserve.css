@@ -1,0 +1,431 @@
+:root{
+  --c1:#0b132b;
+  --c2:#1c2541; 
+  --c3:#3a506b;
+  --c4:#5bc0be; 
+  --c5:#f1f5f9;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:#f8fafc;
+  color:#0b132b
+}
+
+.site-header{
+  padding:2.2rem 1rem;
+  text-align:center;
+  background:linear-gradient(180deg, #e6fffd, transparent)
+}
+.site-header h1{
+  margin:0;
+  font-weight:800;
+  color:var(--c2)
+}
+.subtitle{
+  margin:.4rem 0 0;
+  opacity:.75
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:1.2rem auto 2.4rem
+}
+
+.card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:14px;
+  padding:1.2rem 1.3rem 1.6rem;
+  margin:1rem 0;
+  box-shadow:0 8px 24px rgba(2,8,20,.06)
+}
+.card h2{
+  margin:.2rem 0 1rem;
+  font-size:1.4rem;
+  color:var(--c2)
+}
+
+.grid{display:grid;gap:1rem}
+
+.grid.two{
+  grid-template-columns:repeat(2, minmax(0,1fr))
+}
+.grid.two .full{grid-column:1/-1}
+
+.panel{
+  background:#fff;
+  border:1px dashed rgba(0,0,0,.12);
+  border-radius:12px;padding:1rem
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:.35rem
+}
+.field label,.label{font-weight:600;color:var(--c2)}
+
+.field input,.field select{
+  padding:.7rem .8rem;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  font-size:1rem;
+  background:#fff;
+  outline:none
+}
+
+.field input:focus,.field select:focus{border-color:var(--c4);box-shadow:0 0 0 .15rem rgba(91,192,190,.25)}
+
+.choice{display:flex;align-items:center;gap:.6rem;margin:.25rem 0}
+.toggle{display:flex;align-items:center;gap:.5rem}
+
+.btn{
+  display:inline-block;
+  background:var(--c3);
+  color:#fff;
+  border:none;
+  padding:.75rem 1rem;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer
+}
+
+.btn:hover{filter:brightness(1.05)}
+.btn.success{background:var(--c4);color:#062c2b}
+.btn.danger{background:#ef4444}
+
+.hint{margin:.6rem 0 0;opacity:.8}
+
+/* ======= Asientos (círculos) ======= */
+.seats-header{display:flex;justify-content:space-between;align-items:center;margin:1.2rem 0 .6rem}
+.seats-header h3{margin:0;color:var(--c2)}
+
+.legend{display:flex;gap:1.2rem;align-items:center}
+.legend .dot{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:.35rem}
+.dot.available{background:var(--c4)}
+.dot.occupied{background:#94a3b8}
+
+.seats-wrapper{
+  display:flex;
+  gap:3rem;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:.6rem 0
+}
+
+.section-seats{min-width:320px}
+.section-seats h4{margin:.2rem 0 .6rem;color:var(--c2)}
+.seat-rows{display:flex;flex-direction:column;gap:.8rem;align-items:center}
+.row{display:flex;align-items:center;gap:1.4rem}
+.row-label{font-weight:800;width:1.2rem;text-align:right;margin-right:.6rem}
+
+.seat{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--c4);
+  color:#062c2b;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+  box-shadow:0 2px 6px rgba(2,8,20,.15)
+}
+
+.seat.occupied{background:#94a3b8;color:#0b132b}
+
+/* ======= Info de clases ======= */
+.info-cards{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:1.2rem
+}
+
+.info{background:#fff;
+  border-radius:12px;
+  border-left:6px solid var(--c3);
+  padding:1rem 1.2rem;
+  width:320px;
+  box-shadow:0 6px 16px rgba(2,8,20,.06)
+}
+.info.business{border-left-color:var(--c4)}
+.info h5{margin:.2rem 0 .4rem;color:var(--c2)}
+.info p{margin:.2rem 0 .6rem}
+.info ul{margin:.2rem 0 0 1rem}
+.info li{margin:.2rem 0}
+
+/* precio inline */
+.price-box{
+  background:#e8fdfd;
+  border:1px solid #b8f3f1;
+  color:#045;
+  display:inline-flex;
+  gap:.6rem;
+  align-items:center;
+  padding:.4rem .6rem;
+  border-radius:.6rem;
+}
+
+/* Footer */
+.site-footer{padding:1.4rem 1rem;text-align:center;color:#334155}
+
+.multi-class {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.seat-class-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 280px;
+  padding: 1rem 1.2rem;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.seat-class-box:hover {
+  transform: scale(1.02);
+}
+
+.seat-class-box h4 {
+  color: var(--c2);
+  margin-bottom: 0.4rem;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.input-row label {
+  font-weight: 600;
+}
+
+.input-row input {
+  width: 60px;
+  padding: 0.4rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-weight: 600;
+}
+
+.price {
+  font-weight: 600;
+  color: var(--c4);
+  margin-bottom: 0.6rem;
+}
+
+.benefits {
+  list-style: none;
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.benefits li::before {
+  content: "✈️ ";
+}
+
+/* ======= Efecto hover en asientos ======= */
+
+.seat:hover:not(.occupied) {
+  background-color: var(--c3);
+  color:#06d8d1;
+  transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(58, 80, 107, 0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+
+.seat {
+  transition: all 0.25s ease;
+}
+
+.seat.occupied:hover {
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background-color: #06d8d1;
+}
+
+@media (max-width: 700px) {
+  .multi-class {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 840px){
+  .grid.two{grid-template-columns:1fr}
+  .row{gap:1rem}
+  .seat{width:40px;height:40px}
+}
+
+
+/* Asiento seleccionado en modo manual */
+.seat.selected {
+  outline: 3px solid #6821ec;
+  box-shadow: 0 0 0 3px rgba(104,33,236,.2);
+}
+
+/* Chips de asientos */
+.badge {
+  display: inline-block;
+  background: #eef2ff;
+  color: #280071;
+  padding: .35rem .55rem;
+  margin: .15rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #ffc107 !important;
+  color: #000;
+}
+.ticket-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+}
+
+/* Overlay del fondo */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 0, 40, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Caja del modal */
+.modal-content {
+  width: 420px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  animation: popin 0.3s ease-out;
+}
+
+/* Animación */
+@keyframes popin {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  color: #280071;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Botón cerrar */
+.close-btn {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #38009c;
+  cursor: pointer;
+  transition: .2s;
+}
+.close-btn:hover {
+  color: #e6003c;
+  transform: scale(1.2);
+}
+
+/* Formulario */
+.modal-form .field {
+  margin-bottom: 1rem;
+}
+
+.modal-form label {
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-form input {
+  width: 100%;
+  padding: 9px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  transition: .25s;
+}
+.modal-form input:focus {
+  border-color: #6821ec;
+  box-shadow: 0 0 6px rgba(104,33,236,0.4);
+}
+
+/* Checkbox */
+.check {
+  display: flex;
+  align-items: center;
+  margin: .4rem 0 1rem;
+  gap: .5rem;
+  color: #333;
+}
+
+/* Botón */
+.btn.success {
+  background: #6821ec;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+}
+.btn.success:hover {
+  background: #5518c7;
+  transform: translateY(-1px);
+}
+
+.btn.warning {
+  background: #ffc107;
+  color: #000;
+}
+.btn.warning:hover {
+  background: #ffcd39;
+}
+
+
+
+

@@ -1,0 +1,181 @@
+<header class="site-header">
+  <h1>Reserva de Asientos</h1>
+  <p class="subtitle">Elige tu experiencia de vuelo ✈️</p>
+</header>
+
+<main class="container">
+
+  <!-- DETALLES -->
+  <section class="card">
+    <h2>Detalles de la reserva</h2>
+
+    <form class="grid two">
+
+      <!-- Cantidad por clase -->
+      <div class="field full">
+        <label><strong>Cantidad de asientos por clase</strong></label>
+
+        <div class="multi-class">
+          <div class="seat-class-box">
+            <h4>Negocios</h4>
+            <input type="number" min="0" max="10"
+                   [(ngModel)]="cantidadBusiness" name="qtyBusiness">
+            <p class="price">Q1,550.00</p>
+          </div>
+
+          <div class="seat-class-box">
+            <h4>Económica</h4>
+            <input type="number" min="0" max="10"
+                   [(ngModel)]="cantidadEconomy" name="qtyEconomy">
+            <p class="price">Q750.00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selección -->
+      <div class="field full">
+        <label><strong>Método de selección</strong></label>
+
+        <div class="choice">
+          <input type="radio" [(ngModel)]="selectionMode" name="mode" value="manual">
+          <label>Manual</label>
+        </div>
+
+        <div class="choice">
+          <input type="radio" [(ngModel)]="selectionMode" name="mode" value="random">
+          <label>Aleatorio</label>
+        </div>
+      </div>
+
+    </form>
+
+    <button class="btn success" (click)="start()">
+      Iniciar selección 
+    </button>
+  </section>
+
+
+
+  <!-- MAPA -->
+  <section class="card" *ngIf="selectionMode === 'manual'">
+    <h3>Selecciona tus asientos</h3>
+
+    <div class="seats-wrapper">
+
+      <!-- BUSINESS -->
+      <div class="section-seats">
+        <h4>Business</h4>
+        <div class="seat-rows">
+          <div class="row" *ngFor="let row of businessRows">
+            <span class="row-label">{{ row }}</span>
+            <div class="seat"
+                 *ngFor="let col of businessCols"
+                 (click)="clickSeat(getSeat(row + col))"
+                 [ngClass]="{
+                    'occupied': !getSeat(row + col)?.is_available,
+                    'selected': isSelectedCode(row + col)
+                 }">
+              {{ row + col }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ECONOMY -->
+      <div class="section-seats">
+        <h4>Económica</h4>
+        <div class="seat-rows">
+          <div class="row" *ngFor="let row of economyRows">
+            <span class="row-label">{{ row }}</span>
+            <div class="seat"
+                 *ngFor="let col of economyCols"
+                 (click)="clickSeat(getSeat(row + col))"
+                 [ngClass]="{
+                    'occupied': !getSeat(row + col)?.is_available,
+                    'selected': isSelectedCode(row + col)
+                 }">
+              {{ row + col }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn success" (click)="finalizeSeatSelection()">
+      Continuar ➜
+    </button>
+  </section>
+
+
+
+  <!-- MODAL -->
+<div class="modal-overlay" *ngIf="showModal">
+  <div class="modal-content animate">
+    
+    <div class="modal-header">
+      <h3>✈️ Pasajero {{ currentIndex + 1 }}</h3>
+      <span class="close-btn" (click)="showModal=false">×</span>
+    </div>
+
+    <form #passForm="ngForm" class="modal-form">
+      
+      <div class="field">
+        <label>Nombre completo</label>
+        <input type="text" name="passenger_name" [(ngModel)]="passenger.passenger_name" required>
+      </div>
+
+      <div class="field">
+        <label>CUI</label>
+        <input type="text" maxlength="13" name="cui" [(ngModel)]="passenger.cui" required>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" name="has_luggage"
+               [(ngModel)]="passenger.has_luggage">
+        Lleva equipaje
+      </label>
+
+      <button class="btn success" (click)="confirmPassenger(passForm)">
+        Guardar pasajero 
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+  <!-- TICKET -->
+  <section class="card" *ngIf="showTicket">
+    <h3>🎟️ ¡Reserva completa!</h3>
+    <p><strong>Fecha:</strong> {{ ticketDate | date:'short' }}</p>
+
+    <table class="ticket-table">
+      <tr>
+        <th>Asiento</th>
+        <th>Pasajero</th>
+        <th>Clase</th>
+        <th>Total</th>
+      </tr>
+
+      <tr *ngFor="let t of ticketList">
+        <td>{{ t.seat_number }}</td>
+        <td>{{ t.passenger_name }}</td>
+        <td>{{ t.class_name }}</td>
+        <td>Q {{ t.price_paid }}</td>
+      </tr>
+
+      <tr class="total-row">
+        <td colspan="3"><strong>Total</strong></td>
+        <td><strong>Q {{ ticketTotal }}</strong></td>
+      </tr>
+    </table>
+
+    <button class="btn primary mt-2" (click)="closeTicket()">
+      Terminar ✅
+    </button>
+  </section>
+
+</main>

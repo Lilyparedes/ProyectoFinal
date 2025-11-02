@@ -1,0 +1,169 @@
+<div class="plane-container">
+  <h1><i class="bi bi-airplane"></i> Mapa de Asientos</h1>
+
+  <div class="stats-container">
+    <div class="stat">🟪 Negocios — Ocupados: <strong>{{ businessOccupied }}</strong> | Libres: <strong>{{ businessFree }}</strong></div>
+    <div class="stat">🟩 Económica — Ocupados: <strong>{{ economyOccupied }}</strong> | Libres: <strong>{{ economyFree }}</strong></div>
+  </div>
+
+  <div class="plane">
+    <!-- Clase de Negocios -->
+    <section class="section">
+      <h2>Clase de Negocios</h2>
+      <div class="seat-grid business">
+        <div class="row" *ngFor="let row of businessRows">
+          <span class="label">{{ row }}</span>
+          <div class="seat"
+               *ngFor="let col of businessCols"
+               [ngClass]="{'occupied': !getSeat(row + col)?.is_available}"
+               (click)="selectSeat(getSeat(row + col))">
+            {{ row + col }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clase Económica -->
+    <section class="section">
+      <h2>Clase Económica</h2>
+      <div class="seat-grid economy">
+        <div class="row" *ngFor="let row of economyRows">
+          <span class="label">{{ row }}</span>
+          <div class="seat"
+               *ngFor="let col of economyCols"
+               [ngClass]="{'occupied': !getSeat(row + col)?.is_available}"
+               (click)="selectSeat(getSeat(row + col))">
+            {{ row + col }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Información de clases -->
+<div class="info-section">
+
+  <div class="info-card business-card">
+    <h3>Clase de Negocios</h3>
+    <p class="price">Q1,550.00</p>
+    <ul>
+      <li>Asientos más amplios y reclinables ✨</li>
+      <li>Prioridad en abordaje y equipaje 🧳</li>
+      <li>Menú gourmet y bebidas premium 🍷</li>
+      <li>Entretenimiento de lujo 🎬</li>
+    </ul>
+  </div>
+
+  <div class="info-card economy-card">
+    <h3>Clase Económica</h3>
+    <p class="price">Q750.00</p>
+    <ul>
+      <li>Excelente relación calidad-precio ✅</li>
+      <li>Asientos estándar confortables 💺</li>
+      <li>Snacks y bebidas incluidos 🥤</li>
+      <li>Entretenimiento general 📺</li>
+    </ul>
+  </div>
+
+</div>
+
+<!--  Estadísticas del usuario -->
+<section class="stats-container mt-4 mb-5 text-center">
+  <h4 class="fw-bold text-primary mb-4">📈 Tu historial de reservas</h4>
+
+  <div class="row justify-content-center g-3">
+
+    <div class="col-6 col-md-4 col-lg-2">
+      <div class="card p-3 shadow-sm rounded-4 border-0">
+        <h6 class="text-secondary mb-1">🎟️ Total</h6>
+        <p class="fs-3 fw-bold text-success mb-0">{{ totalReservations }}</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+      <div class="card p-3 shadow-sm rounded-4 border-0">
+        <h6 class="text-secondary mb-1">🖱️ Manual</h6>
+        <p class="fs-3 fw-bold text-primary mb-0">{{ manualReservations }}</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+      <div class="card p-3 shadow-sm rounded-4 border-0">
+        <h6 class="text-secondary mb-1">🎯 Aleatorio</h6>
+        <p class="fs-3 fw-bold text-warning mb-0">{{ randomReservations }}</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+      <div class="card p-3 shadow-sm rounded-4 border-0">
+        <h6 class="text-secondary mb-1">✏️ Modificados</h6>
+        <p class="fs-3 fw-bold text-info mb-0">{{ modifiedReservations }}</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+      <div class="card p-3 shadow-sm rounded-4 border-0">
+        <h6 class="text-secondary mb-1">❌ Cancelados</h6>
+        <p class="fs-3 fw-bold text-danger mb-0">{{ canceledReservations }}</p>
+      </div>
+    </div>
+
+
+
+<button class="btn btn-info mt-3" (click)="downloadXML()">
+  📥 Descargar XML de Reservas
+</button>
+
+<div class="text-end mb-3">
+  <label class="btn btn-outline-primary">
+    📂 Importar XML
+    <input type="file" hidden (change)="uploadXML($event)" accept=".xml">
+  </label>
+</div>
+
+
+
+  </div>
+</section>
+
+<!--  Modal de resultado de importación -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">📦 Resultado de Importación</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p><span class="text-success fw-bold">✅ {{ importResult.cargados }}</span> asientos cargados correctamente</p>
+        <p><span class="text-danger fw-bold">❌ {{ importResult.errores }}</span> con error</p>
+        <p><span class="text-info fw-bold">⏱️ {{ importResult.tiempo }}</span> de procesamiento</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- MODAL -->
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-content">
+      <h3>Asiento {{ selectedSeat?.seat_number }}</h3>
+
+      <p *ngIf="selectedSeat?.is_available" class="free-text">✅ Disponible</p>
+      <p *ngIf="!selectedSeat?.is_available" class="occ-text">❌ Ocupado</p>
+
+      <div *ngIf="selectedSeat?.is_available" class="modal-actions">
+        <button class="btn primary" (click)="goToReserve()">
+          Reservar ✈️
+        </button>
+      </div>
+
+      <button class="btn secondary mt-2" (click)="closeModal()">Cerrar</button>
+    </div>
+  </div>
+
+</div>

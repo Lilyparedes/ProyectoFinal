@@ -1,0 +1,103 @@
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.2rem;
+  width: 95%;
+  max-width: 550px;
+  margin: 2rem auto;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.logo {
+  width: 45px;
+  margin-bottom: .5rem;
+}
+
+.top h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #280071;
+}
+
+.panel {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.field {
+  margin-bottom: 1.2rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: .4rem;
+}
+
+input {
+  width: 100%;
+  padding: .8rem;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  transition: .3s ease;
+}
+
+input:focus {
+  border-color: #6821ec;
+  outline: none;
+  box-shadow: 0 0 8px rgba(104,33,236,.25);
+}
+
+.btn {
+  width: 100%;
+  padding: .9rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: .2s ease;
+}
+
+.btn.danger {
+  background: #e01444;
+}
+
+.btn.danger:hover {
+  background: #b50e36;
+  transform: scale(1.02);
+}
+
+/* ✅ Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.btn.primary {
+  background: #280071;
+}
+
+.btn.primary:hover {
+  background: #1d0051;
+}

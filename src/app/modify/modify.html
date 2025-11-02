@@ -1,0 +1,86 @@
+<section class="card">
+  <h2>Modificar reserva</h2>
+
+  <form class="grid two" #modifyForm="ngForm" (ngSubmit)="modifyReservation()">
+
+    <!-- CUI -->
+    <div class="field">
+      <label>CUI del pasajero</label>
+      <input type="text"
+             [(ngModel)]="cui"
+             name="cui"
+             inputmode="numeric"
+             maxlength="13"
+             placeholder="Ej. 1234567890101"
+             required>
+    </div>
+
+    <!-- Asiento actual -->
+    <div class="field">
+      <label>Asiento actual</label>
+      <input type="text"
+             [(ngModel)]="currentSeatNumber"
+             name="currentSeat"
+             placeholder="Ej. A3"
+             required>
+    </div>
+
+    <!-- Nuevo asiento -->
+    <div class="field">
+      <label>Nuevo asiento (misma clase)</label>
+      <input type="text"
+             [(ngModel)]="newSeatNumber"
+             name="newSeat"
+             placeholder="Ej. A5"
+             required>
+    </div>
+
+    <button class="btn" type="submit">
+      Aplicar modificación (+10%)
+    </button>
+
+  </form>
+
+  <!-- Modal de error -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h5 class="modal-title text-danger">❌ Error</h5>
+      <div class="modal-body">
+        <p>CUI inválido o no se pudo modificar la reserva.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de éxito -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h5 class="modal-title text-success">✅ Reserva modificada</h5>
+      <div class="modal-body">
+        <p>El pasajero {{ modifiedPassenger }} ha cambiado su asiento a {{ newSeatNumber }}.</p>
+        <p>Nuevo precio: {{ newPrice | currency:'Q' }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-bs-dismiss="modal" (click)="closeSuccess()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+<!--  Modal de éxito -->
+<div class="modal-overlay" *ngIf="showSuccessModal">
+  <div class="modal-content">
+    <h3>✅ ¡Modificación realizada!</h3>
+    <p>Tu asiento ha sido actualizado con éxito.</p>
+
+    <button class="btn" (click)="closeSuccess()">Volver</button>
+  </div>
+</div>
